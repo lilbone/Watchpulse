@@ -1,0 +1,16 @@
+@media screen and (min-width: 768px) {
+  .ajax-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .movie-item{
+    width:28vw;
+  }
+
+  #form-add-watch #my-rating {
+    width:50%
+  }
+  #form-add-watch datalist {
+    width: 50%;
+  }
+}

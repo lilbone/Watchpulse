@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  --darkColor: #382323;
+  --whiteColor: floralwhite;
+  --redColor: #9d1726;
+  --orangeColor: #ba5f1d;
+  background-color: var(--darkColor);
+  color: var(--whiteColor);
+}
+
+.container {
+  max-width: 1050px;
+  width: 90%;
+  margin: auto;
+}
+
+.section {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.vh-100 {
+  min-height: 100vh !important;
+}
+.vh-90 {
+  min-height: 90vh !important;
+}
+.vh-80 {
+  min-height: 80vh !important;
+}
+
+.t-center {
+  text-align: center;
+}

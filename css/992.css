@@ -1,0 +1,34 @@
+@media screen and (min-width: 992px) {
+  .nav-container {
+    height: 80px;
+  }
+  .nav-container .hamburger-lines {
+    display: none;
+  }
+  .navbar .menu-items {
+    padding: 0px 0px;
+    box-shadow: none;
+    width: auto;
+    transform: none;
+    display: flex;
+    flex-direction:row;
+    gap: 10px;
+    margin: 0px;
+    text-align: center;
+  }
+  .nav-container .checkbox{
+    display: none;
+  }
+
+  .movie-item{
+    width:25vw;
+  }
+
+  .logo{
+    top:20px;
+  }
+  
+  .logo h1 {
+    font-size: 2.3rem;
+  }
+}
