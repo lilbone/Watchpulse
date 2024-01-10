@@ -6,31 +6,16 @@ echo -ne "Content-type: text/html; charset=utf-8\n\n"
 
 read querystring
 eval "${querystring//&/;}"
-                                         # colors for chatmember display
-color=( "#ff0000" "#00ff00" "#0000ff" "#ffff00" "#00ffff" "#ff00ff" \
-        "#ff8000" "#80ff00" "#00ff80" "#0080ff" "#8000ff" "#ff0080" )
 
-'if [[ -n $submit ]]                      # append new message to file
-'then
-'  sender="$(echo -e ${name//%/\\x} | tr '+' ' ')"
-'  date +"#TIMESTAMP %F %T "
-'  echo -e "#SENDER $sender"
-'  echo "#STARTMESSAGE"
-'  echo -e "${message//%/\\x}" | tr '+' ' ' | tr -d '#'
-'  echo "#ENDMESSAGE"
-'fi >> $CHAT_FILE'
-if [[ -n $submit ]]; then
-  sender="$(echo -e ${name//%/\\x} | tr '+' ' ')"
-  date +"#TIMESTAMP %F %T "
-  echo -e "#SENDER $sender"
-  echo "#STARTMESSAGE"
-  echo -e "${message//%/\\x}" | tr '+' ' ' | tr -d '#'
-  echo "#ENDMESSAGE"
+if [[ -n $addWatch ]]
+then
+  echo -e "#STARTFILM"
+  echo -e "$querystring"
+  echo "#ENDFILM"
 fi >> $CHAT_FILE
 
 if [[ -n $a_request ]]; then
-  # Response to AJAX-request
-  # Block response until file modify...
+
   [[ $a_request = b ]] && inotifywait -e modify "$CHAT_FILE" > /dev/null 2>&1
 
   while read -r line; do

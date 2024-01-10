@@ -20,6 +20,7 @@ window.onload = () => {
   const searchResult = document.getElementById("search-result");
   const searchType = document.getElementById("search-type");
   let omdbData;
+
   searchName.addEventListener("change", async (e) => {
     // Verwende die Funktion und speichere das Ergebnis in einer Variable
     searchResult.innerHTML = "";
@@ -39,42 +40,81 @@ window.onload = () => {
     searchResult.appendChild(movieInfo);
 
     const formAddWatch = document.getElementById("form-add-watch");
-    formAddWatch.addEventListener("submit", (e) => {
+    formAddWatch.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const formData = new FormData();
       omdbData.myRating = document.getElementById("my-rating").value;
-      formData.append("movieData", omdbData);
-      const data = Object.fromEntries(formData.entries());
-      console.log(omdbData);
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "addWatch": "true",
+          },
+          body: JSON.stringify(omdbData),
+        });
+
+        if (response.ok) {
+          console.log("Movie added to Watches!");
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    });
+  });
+
+  start();                  // start update sequence
+
+  function start() {
+    setInterval(() => update("0"), 1000);
+  }
+
+  function update(block) {
+    if (!isRequestPending) {
+      isRequestPending = true;
+
       fetch(url, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(data)
+        body: "a_request=" + block,
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          alert("Movie added to Watches!");
+        .then((response) => response.text())
+        .then((jsonData) => {
+          const c1 = document.getElementById('c1');
+          c1.innerHTML = "";
+
+          jsonData.trim().split('\n').forEach((data) => {
+            const movieData = JSON.parse(data);
+
+            const movieDiv = document.createElement("div");
+            movieDiv.className = "movie-item";
+
+            const posterImg = document.createElement("img");
+            posterImg.src = movieData.Poster;
+            movieDiv.appendChild(posterImg);
+
+            const imdbRating = movieData.Ratings.find(rating => rating.Source === "Internet Movie Database");
+
+            const movieInfo = document.createElement("div");
+            movieInfo.innerHTML = `<h2>${movieData.Title}</h2><h3>Rating: ${imdbRating.Value}</h3><p>Year: ${movieData.Year}</p><p>${movieData.Plot}</p><br><p>Genre: ${movieData.Genre}</p><p>Director: ${movieData.Director}</p><p>Actors: ${movieData.Actors}</p>`;
+            movieDiv.appendChild(movieInfo);
+
+            c1.appendChild(movieDiv);
+          });
+
+          isRequestPending = false;
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error:", error);
         });
-    });
-  });
- /*  <form id="form" method="post" action="$SCRIPT_NAME">
-    <div class="form-row">
-      <label class="form-element" for="form-name">Name:</label>
-      <div class="form-element">
-        <input class="input-name" id="form-name" type="text" name="name" value="$sender">
-      </div>
-    </div>
-  </form> */
+    }
+  }
 
-  start();                  // start after loading HTML
-
-  function start() {
+  /* function start() {
     myAjax = new XMLHttpRequest();        // new AJAX object
     //myAjax.onreadystatechange = setInterval(readAjax, 2000);   // start readAjax when response is ready
     setInterval(update("0"), 1000);             // run update() every second
@@ -136,6 +176,6 @@ window.onload = () => {
       isRequestPending = false; // Setze die Variable zurück, wenn die Anfrage abgeschlossen ist
       update("b");
     }
-  }
+  } */
 
 };
