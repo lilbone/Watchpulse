@@ -13,4 +13,10 @@
   #form-add-watch datalist {
     width: 50%;
   }
+
+  #search-film{
+    flex-direction: row;
+    justify-content: center;
+    align-items: normal;
+  }
 }
