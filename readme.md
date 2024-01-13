@@ -31,6 +31,8 @@ Die Watch Pulse WebApp ist eine Anwendung, die es ermöglicht, Filme und Serien 
 ## Einstellungen
 Die WebApp erfordert keine spezifischen Einstellungen. Beachte jedoch, dass die OMDB-API einen API-Schlüssel benötigt, der in der `js/main.js`-Datei festgelegt ist. Stelle sicher, dass du einen gültigen API-Schlüssel von OMDB besitzt und ersetze ihn in der Datei, falls erforderlich.
 
+Die WebApp ist nach der Konfiguration des Apache2 servers und der Installation der benötigten Pakete unter `IP-Adresse/Watchpulse.cgi` erreichbar.
+
 ## Abhängigkeiten
 Die WebApp benötigt das Tool `jq` für die JSON-Verarbeitung. Stelle sicher, dass `jq` auf deinem System installiert ist, um die volle Funktionalität zu gewährleisten.
 
