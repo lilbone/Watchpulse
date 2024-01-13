@@ -74,9 +74,10 @@ window.onload = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "addWatch2": "true",
+            "addWatch": "true",
           },
-          body: JSON.stringify(omdbData),
+          body: "addWatch=" + JSON.stringify(omdbData),
+          //body: JSON.stringify(omdbData),
         });
 
         if (response.ok) {
@@ -99,7 +100,7 @@ window.onload = () => {
     // Intervall für die Update-Sequenz festlegen
     const genre = document.getElementById("filter");
     setInterval(() => update(genre.value), 1000);
-    //update("Action");
+    //update("all");
   }
 
   // Funktion, um Filme zu aktualisieren

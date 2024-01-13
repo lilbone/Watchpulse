@@ -51,9 +51,9 @@ done
 # Wenn HTTP_ADDWATCH auf "true" gesetzt ist, füge den Eintrag zur Watchlist hinzu
 if [[ "$(echo "$HTTP_ADDWATCH")" == "true" ]]; then
   # Logge den empfangenen addWatch-Request und die Daten
-  echo "Received addWatch request. Data: $querystring" >> "$LOG_FILE"
+  echo "Received addWatch request. Data: $addWatch" >> "$LOG_FILE"
   echo "#STARTFILM"
-  echo "$querystring"
+  echo "$addWatch"
   echo "#ENDFILM"
 fi >> "$WATCHLIST_FILE"
 
