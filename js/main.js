@@ -9,6 +9,12 @@ window.onload = () => {
   let myAjax;
   let c1;
   let isRequestPending = false;
+  let omdbData;
+
+  // Elemente im HTML-Dokument abrufen
+  const searchName = document.getElementById("search-name");
+  const searchResult = document.getElementById("search-result");
+  const searchType = document.getElementById("search-type");
 
   // Funktion, um Daten von der OMDB-API abzurufen
   async function fetchOMDBData(movieTitle, type) {
@@ -34,12 +40,6 @@ window.onload = () => {
       console.error('Fehler beim Abrufen der Daten von OMDB:', error);
     }
   }
-
-  // Elemente im HTML-Dokument abrufen
-  const searchName = document.getElementById("search-name");
-  const searchResult = document.getElementById("search-result");
-  const searchType = document.getElementById("search-type");
-  let omdbData;
 
   // Event-Listener für Änderungen im Suchfeld
   searchName.addEventListener("change", async (e) => {
