@@ -77,7 +77,6 @@ window.onload = () => {
             "addWatch": "true",
           },
           body: "addWatch=" + JSON.stringify(omdbData),
-          //body: JSON.stringify(omdbData),
         });
 
         if (response.ok) {
