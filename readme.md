@@ -92,6 +92,12 @@ Füge die folgende Konfiguration zur `/etc/apache2/sites-available/000-default.c
 </VirtualHost>
 ```
 
+Nach den Änderungen muss der Apache Server neu gestartet werden:
+
+```bash
+service apache2 restart
+```
+
 ## Dateien von Git herunterladen
 Lade die Watch-Pulse Dateien in deinen Projekt-Ordner herunter
 
