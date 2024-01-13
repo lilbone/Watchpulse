@@ -8,6 +8,7 @@
   /* Styling-Anpassungen für Movie-Items */
   .movie-item {
     width: 20vw;
+    max-width: 260px;
   }
 
   /* Styling-Anpassungen für Bilder in AJAX-Inhalten */
