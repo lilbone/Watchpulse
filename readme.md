@@ -58,17 +58,10 @@ sudo apt update
 sudo apt install apache2 
 ```
 
-Erstelle deinen Projektordner in dem du folgende Befehle ausführst:
-
-```apache
-cd /lib/cgi-bin/
-mkdir Dein-Projekt-Name
-```
-
 Füge die folgende Konfiguration zu den Directories zur `/etc/apache2/apache2.conf` hinzu, um den Zugriff auf das Verzeichnis der CGI-Skripte zu ermöglichen:
 
 ```apache
-<Directory "/usr/lib/cgi-bin/Dein-Projekt-Name">
+<Directory "/usr/lib/cgi-bin/Watchpulse">
     Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
@@ -81,14 +74,14 @@ Füge die folgende Konfiguration zur `/etc/apache2/sites-available/000-default.c
 <VirtualHost *:80>
     # ...
 
-    DocumentRoot /lib/cgi-bin/Dein-Projekt-Name
+    DocumentRoot /lib/cgi-bin/Watchpulse
 
     # ...
 
-    ScriptAlias /cgi-bin/ "/lib/cgi-bin/Dein-Projekt-Name/"
+    ScriptAlias /cgi-bin/ "/lib/cgi-bin/Watchpulse/"
     AddHandler cgi-script .cgi .pl .js
 
-    <Directory "/lib/cgi-bin/Dein-Projekt-Name/">
+    <Directory "/lib/cgi-bin/Watchpulse/">
         AllowOverride None
         Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
         Require all granted
@@ -101,8 +94,8 @@ Füge die folgende Konfiguration zur `/etc/apache2/sites-available/000-default.c
 Lade die Watch-Pulse Dateien in deinen Projekt-Ordner herunter
 
 ```apache
-cd /lib/cgi-bin/Dein-Projekt-Name
-sudo git clone https://github.com/lilbone/Projekt-Media-App.git
+cd /lib/cgi-bin/
+sudo git clone https://github.com/lilbone/Watchpulse.git
 ```
 
 Anschließend musst du noch den Benutzer anpassen:
