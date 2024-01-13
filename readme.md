@@ -37,7 +37,7 @@ Die WebApp benötigt das Tool `jq` für die JSON-Verarbeitung. Stelle sicher, da
 ### Installation von jq unter Linux
 Führe die folgenden Befehle aus, um `jq` auf einem Linux-System zu installieren:
 
-```apache
+```bash
 sudo apt update
 sudo apt install -y jq
 ```
@@ -45,7 +45,7 @@ sudo apt install -y jq
 ### Installation von git unter Linux
 Führe die folgenden Befehle aus, um `git` auf einem Linux-System zu installieren:
 
-```apache
+```bash
 sudo apt update
 sudo apt install git
 ```
@@ -53,7 +53,7 @@ sudo apt install git
 ## Apache2-Konfiguration
 Installation von Apache2
 
-```apache
+```bash
 sudo apt update
 sudo apt install apache2 
 ```
@@ -93,14 +93,15 @@ Füge die folgende Konfiguration zur `/etc/apache2/sites-available/000-default.c
 ## Dateien von Git herunterladen
 Lade die Watch-Pulse Dateien in deinen Projekt-Ordner herunter
 
-```apache
+```bash
 cd /lib/cgi-bin/
 sudo git clone https://github.com/lilbone/Watchpulse.git
 ```
 
 Anschließend musst du noch den Benutzer anpassen:
-```apache
-sudo chown -R www-data:www-data /lib/cgi-bin/Dein-Projekt-Name
+```bash
+sudo chown -R www-data:www-data /lib/cgi-bin/Watchpulse
+sudo chmod -R +x /lib/cgi-bin/Watchpulse
 ```
 
 ## Log-Datei (`log.txt`) Funktionalität
