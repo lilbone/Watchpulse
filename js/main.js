@@ -1,13 +1,22 @@
+/* ################################################################
+ Filename      : main.js
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
 // Dieser Code wird ausgeführt, wenn die Webseite vollständig geladen ist
 window.onload = () => {
+  // Deklaration von Variablen
   let myAjax;
   let c1;
   let isRequestPending = false;
 
   // Funktion, um Daten von der OMDB-API abzurufen
   async function fetchOMDBData(movieTitle, type) {
+    // API-Key für den Zugriff auf die OMDB-API
     const apiKey = '62b9f284';
     let apiUrl;
+
+    // Aufbau der API-URL abhängig vom Filmtitel bzw. der IMDB-ID
     if (movieTitle.startsWith("tt")) {
       apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${encodeURIComponent(movieTitle)}&type=${encodeURIComponent(type)}`;
     } else {
@@ -15,10 +24,13 @@ window.onload = () => {
     }
 
     try {
+      // Fetch-Anfrage an die OMDB-API senden
       const response = await fetch(apiUrl);
+      // JSON-Daten der Antwort extrahieren
       const data = await response.json();
       return data;
     } catch (error) {
+      // Fehlerbehandlung bei der Anfrage an die OMDB-API
       console.error('Fehler beim Abrufen der Daten von OMDB:', error);
     }
   }
@@ -45,8 +57,8 @@ window.onload = () => {
     // Erstelle ein Container-Div für Filminformationen
     const movieInfo = document.createElement("div");
     movieInfo.classList.add("container");
-    movieInfo.innerHTML = `<h2>${omdbData.Title}</h2><p>Year: ${omdbData.Year}</p><form id="form-add-watch" method="POST" action="` + url + `"><label for="my-rating">Deine Bewertung:</label>
-    <input type="range" id="my-rating" name="my-rating" min="0" max="10" step="1" list="values" oninput="rangeValue.innerText = this.value"><datalist id="values"><option value="0" label="0"></option><option value="1" label="1"></option><option value="2" label="2"></option><option value="3" label="3"></option><option value="4" label="4"></option><option value="5" label="5" selected></option><option value="6" label="6"></option><option value="7" label="7"></option><option value="8" label="8"></option><option value="9" label="9"></option><option value="10" label="10"></option></datalist><p id="rangeValue">5</p><input type="submit" id="form-add-watch-submit" value="Add to Watches"></form>`;
+    movieInfo.innerHTML = `<h2>${omdbData.Title}</h2><p>Year: ${omdbData.Year}</p><p>Genre: ${omdbData.Genre}</p><form id="form-add-watch" method="POST" action="` + url + `"><label for="my-rating">Deine Bewertung:</label>
+    <input type="range" id="my-rating" name="my-rating" min="0" max="10" step="1" list="values" oninput="rangeValue.innerText = this.value"><p id="rangeValue">5</p><input type="submit" id="form-add-watch-submit" value="Add to Watches"></form>`;
     searchResult.appendChild(movieInfo);
 
     // Event-Listener für das Hinzufügen eines Films zu den beobachteten Filmen
@@ -57,11 +69,12 @@ window.onload = () => {
 
       console.log("Daten vor dem Senden: \n" + JSON.stringify(omdbData));
       try {
+        // Fetch-Anfrage an den Server senden
         const response = await fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "addWatch": "true",
+            "addWatch2": "true",
           },
           body: JSON.stringify(omdbData),
         });
@@ -72,6 +85,7 @@ window.onload = () => {
           throw new Error("Netzwerkantwort war nicht in Ordnung.");
         }
       } catch (error) {
+        // Fehlerbehandlung bei der Fetch-Anfrage an den Server
         console.error("Fehler:", error);
       }
     });
@@ -82,11 +96,15 @@ window.onload = () => {
 
   // Funktion für die Update-Sequenz
   function start() {
-    setInterval(() => update("0"), 1000);
+    // Intervall für die Update-Sequenz festlegen
+    const genre = document.getElementById("filter");
+    //setInterval(() => update(genre.value), 5000);
+    update("Action");
   }
 
   // Funktion, um Filme zu aktualisieren
   function update(block) {
+    // Prüfen, ob bereits eine Anfrage aussteht
     if (!isRequestPending) {
       isRequestPending = true;
 
@@ -96,12 +114,12 @@ window.onload = () => {
         headers: {
           "Content-type": "application/x-www-form-urlencoded",
         },
-        body: "a_request=" + block,
+        body: "load_watchlist=" + block,
       })
         .then((response) => response.text())
         .then((jsonData) => {
           // Container im HTML löschen
-          const c1 = document.getElementById('c1');
+          const c1 = document.getElementById('show-watchlist');
           c1.innerHTML = "";
 
           // JSON-Daten verarbeiten und Filme anzeigen
@@ -125,10 +143,23 @@ window.onload = () => {
             c1.appendChild(movieDiv);
           });
 
+          // Anfrage-Status aktualisieren
           isRequestPending = false;
         })
         .catch((error) => {
-          console.error("Fehler:", error);
+          // Fehlerbehandlung bei der Fetch-Anfrage an den Server
+          // Container im HTML löschen
+          const c1 = document.getElementById('show-watchlist');
+          c1.innerHTML = "";
+
+          // Meldung ausgeben wenn kein Watch gefunden wird
+          const errorMessage = document.createElement("p");
+          errorMessage.id = "error-message";
+          errorMessage.textContent = "Mit diesem Filter ist kein Watch vorhanden!";
+          c1.appendChild(errorMessage);
+          console.log("Mit diesem Filter ist kein Watch vorhanden!");
+          //console.log("Fehler:", error);
+          isRequestPending = false;
         });
     }
   }

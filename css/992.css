@@ -1,34 +1,33 @@
+/* ################################################################
+ Filename      : 992.css
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
+/* Media Query für Bildschirme mit einer Breite größer als 992px */
 @media screen and (min-width: 992px) {
+  /* Styling-Anpassungen für die Navigationsleiste */
   .nav-container {
     height: 80px;
   }
-  .nav-container .hamburger-lines {
-    display: none;
-  }
-  .navbar .menu-items {
-    padding: 0px 0px;
-    box-shadow: none;
-    width: auto;
-    transform: none;
-    display: flex;
-    flex-direction:row;
-    gap: 10px;
-    margin: 0px;
-    text-align: center;
-  }
-  .nav-container .checkbox{
-    display: none;
+
+  /* Styling-Anpassungen für Links in der Navbar */
+  .navbar .nav-container a {
+    font-size: 1.6rem;
   }
 
-  .movie-item{
-    width:25vw;
+  /* Styling-Anpassungen für Movie-Items */
+  .movie-item {
+    width: 25vw;
   }
 
-  .logo img{
+  /* Styling-Anpassungen für Bilder in AJAX-Inhalten */
+  .ajax-content img {
+    height: 35vw;
+    max-height: 380px;
+  }
+
+  /* Styling-Anpassungen für das Logo-Bild */
+  .logo img {
     width: 120px;
-  }
-  
-  .logo h1 {
-    font-size: 2.3rem;
   }
 }

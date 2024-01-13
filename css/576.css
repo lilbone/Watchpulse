@@ -1,5 +1,25 @@
+/* ################################################################
+ Filename      : 576.css
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
+/* Medienabfrage für Bildschirme mit einer Breite von mindestens 576 Pixeln */
 @media screen and (min-width: 576px) {
+  /* Anpassungen für den Container mit AJAX-Inhalten */
+  .ajax-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: normal;
+  }
+
+  /* Anpassungen für Bilder im Container */
+  .ajax-content img{
+    width: 90%;
+    height: 50vw;
+  }
+
+  /* Anpassungen für einzelne Film-Elemente */
   .movie-item{
-    width:60%;
+    width:48%;
   }
 }

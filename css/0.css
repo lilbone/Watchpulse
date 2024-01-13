@@ -1,4 +1,11 @@
+/* ################################################################
+ Filename      : 0.css
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
+/* Medienabfrage für Bildschirme mit einer Breite von mindestens 0 Pixel */
 @media screen and (min-width: 0px) {
+  /* Stile für die Navbar */
   .navbar {
     width: 100%;
     box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
@@ -6,6 +13,7 @@
     background-color: var(--redColor);
   }
 
+  /* Stile für den Container in der Navbar */
   .nav-container {
     display: flex;
     justify-content: space-between;
@@ -13,14 +21,17 @@
     height: 62px;
   }
 
+  /* Stile für Menüpunkte in der Navbar */
   .navbar .menu-items {
     display: flex;
   }
 
+  /* Stile für Listenpunkte in der Navbar */
   .navbar .nav-container li {
     list-style: none;
   }
 
+  /* Stile für Links in der Navbar */
   .navbar .nav-container a {
     text-decoration: none;
     color: var(--whiteColor);
@@ -29,10 +40,12 @@
     padding: 0.7rem;
   }
 
+  /* Stile für hover-Effekt auf Links in der Navbar */
   .navbar .nav-container a:hover {
     font-weight: bolder;
   }
 
+  /* Weitere Stile für den Container in der Navbar */
   .nav-container {
     display: flex;
     position: relative;
@@ -40,18 +53,20 @@
     flex-direction: row-reverse;
   }
 
+  /* Stile für den Hamburger-Button in der Navbar */
   .nav-container .checkbox {
     position: absolute;
     display: block;
     height: 32px;
     width: 32px;
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 0px;
     z-index: 5;
     opacity: 0;
     cursor: pointer;
   }
 
+  /* Stile für die Hamburger-Linien in der Navbar */
   .nav-container .hamburger-lines {
     display: block;
     height: 26px;
@@ -65,6 +80,7 @@
     justify-content: space-between;
   }
 
+  /* Stile für die einzelnen Linien im Hamburger-Button */
   .nav-container .hamburger-lines .line {
     display: block;
     height: 4px;
@@ -73,6 +89,7 @@
     background: var(--whiteColor);
   }
 
+  /* Weitere Stile für die Animation des Hamburger-Buttons */
   .nav-container .hamburger-lines .line1 {
     transform-origin: 0% 0%;
     transition: transform 0.4s ease-in-out;
@@ -87,6 +104,7 @@
     transition: transform 0.4s ease-in-out;
   }
 
+  /* Stile für das Menü, das bei Klick auf den Hamburger-Button erscheint */
   .navbar .menu-items {
     padding: 80px 6vw;
     background-color: var(--redColor);
@@ -100,16 +118,19 @@
     margin-top: 210px;
   }
 
+  /* Weitere Stile für Menüpunkte im aufklappenden Menü */
   .navbar .menu-items li {
     font-size: 1.5rem;
     font-weight: 500;
   }
 
+  /* Stile für das Logo */
   .logo img {
     width: 100px;
     margin-top: 5px;
   }
 
+  /* Stile für Animation des Hamburger-Menüs bei Klick */
   .nav-container input[type="checkbox"]:checked ~ .menu-items {
     transform: translateX(0);
   }
@@ -126,33 +147,79 @@
     transform: rotate(-45deg);
   }
 
+  /* Stile für Überschriften in Sektionen */
   .section h1 {
     margin-top: 20px;
     margin-bottom: 40px;
-    font-size: 3rem;
-  }
-  .section h1 > span{
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
 
+  /* Anpassung des Slogans */
+  .section h1 > span{
+    font-size: 2.4rem;
+    margin-top: 18px;
+    display: inline-block;
+  }
+
+  /* Stile für spezifische Sektionen */
   #my-watches {
     background-color: var(--orangeColor);
+  }
+
+  /* Stile für die Anordnung des Filters */
+  #my-watches #my-watches-filter{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .center-filter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Stile für das Label des Filters */
+  #my-watches label{
+    color: var(--redColor);
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  /* Stile für den Filter */
+  #my-watches select{
+    font-size: 16px;
+    padding: 4px;
   }
 
   #add-watches {
     background-color: var(--redColor);
   }
 
+  /* Error messsage wenn kein Watch mit ausgewähltem Filter gespeichert ist*/
+  #error-message{
+    color: var(--darkColor);
+    font-size: 26px;
+    margin: 50px;
+    text-align: center;
+    background: var(--redColor);
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px black;
+    padding: 10px;
+  }
+
+  /* Stile für den Container mit AJAX-Inhalten */
   .ajax-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2vw;
+    gap: 3vw;
   }
   .ajax-content img {
-    margin-top: 30px;
-    width: 100%;
+    width: 90%;
   }
   .ajax-content p {
     color: var(--darkColor);
@@ -163,8 +230,10 @@
   }
   .movie-item {
     width: 80%;
+    margin-top: 25px;
   }
 
+  /* Stile für das Suchfeld */
   #search-film {
     display: flex;
     gap: 30px;
@@ -190,6 +259,7 @@
     font-size: 18px;
   }
 
+  /* Stile für das Suchergebnis */
   #search-result {
     display: flex;
     flex-direction: column;
@@ -198,6 +268,7 @@
     margin-top: 4vw;
   }
 
+  /* Stile für den Button "Add to Watches" im Formular */
   #form-add-watch-submit {
     margin-top: 15px;
     font-size: 1.3rem;
@@ -212,18 +283,13 @@
     color: white;
   }
 
+  /* Stile für das Formular zum Hinzufügen eines Films */
   #form-add-watch {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     align-items: center;
   }
-  /* #form-add-watch datalist {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-  } */
   #form-add-watch #my-rating {
     margin-top: 10px;
     width:80%;
@@ -236,7 +302,8 @@
     margin-top: 10px;
   }
 
+  /* Stile für Bewertungen und Ratings */
   .movie-info h3, .movie-info h4{
-        color: var(--redColor);
+    color: var(--redColor);
   }
 }

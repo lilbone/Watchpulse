@@ -1,12 +1,55 @@
+/* ################################################################
+ Filename      : 768.css
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
+/* Medienabfrage für Bildschirme mit einer Breite von mindestens 768 Pixeln */
 @media screen and (min-width: 768px) {
-  .ajax-content {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .movie-item{
-    width:28vw;
+  /* Verstecke die Hamburger-Lines in der Navbar */
+  .nav-container .hamburger-lines {
+    display: none;
   }
 
+  /* Anpassungen für das Menü in der Navbar */
+  .navbar .menu-items {
+    padding: 0px 0px;
+    box-shadow: none;
+    width: auto;
+    transform: none;
+    display: flex;
+    flex-direction:row;
+    gap: 10px;
+    margin: 0px;
+    text-align: center;
+  }
+
+  /* Verstecke den Checkbox-Input in der Navbar */
+  .nav-container .checkbox{
+    display: none;
+  }
+
+  /* Anpassung des Abstands des Slogans */
+  .section h1 > span{
+    margin-top: 30px;
+  }
+
+  /* Anpassung der Anordnung des Filters */
+  #my-watches #my-watches-filter{
+    flex-direction: row;
+  }
+  
+  /* Anpassungen für einzelne Film-Elemente */
+  .movie-item{
+    width:26vw;
+  }
+
+  /* Anpassungen für Bilder im Container */
+  .ajax-content img{
+    width: 100%;
+    height: 35vw;
+  }
+
+  /* Anpassungen für das Bewertungsfeld im Formular */
   #form-add-watch #my-rating {
     width:50%
   }
@@ -14,6 +57,7 @@
     width: 50%;
   }
 
+  /* Anpassungen für das Suchfeld */
   #search-film{
     flex-direction: row;
     justify-content: center;

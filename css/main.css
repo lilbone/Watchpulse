@@ -1,3 +1,9 @@
+/* ################################################################
+ Filename      : main.css
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
+/* Allgemeine Stile für alle HTML-Elemente */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,6 +11,7 @@
   scroll-behavior: smooth;
 }
 
+/* Stile für den gesamten Body */
 body {
   font-family: Roboto, Arial, Helvetica, sans-serif;
   --darkColor: #382323;
@@ -15,17 +22,20 @@ body {
   color: var(--whiteColor);
 }
 
+/* Stile für allgemeine Container */
 .container {
   max-width: 1050px;
   width: 90%;
   margin: auto;
 }
 
+/* Stile für Sektionen auf der Seite */
 .section {
   padding-top: 40px;
   padding-bottom: 30px;
 }
 
+/* Verschiedene Höhenklassen für Sektionen */
 .vh-100 {
   min-height: 100vh !important;
 }
@@ -36,6 +46,7 @@ body {
   min-height: 80vh !important;
 }
 
+/* Zentrierte Textausrichtung */
 .t-center {
   text-align: center;
 }

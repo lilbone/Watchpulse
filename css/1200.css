@@ -1,5 +1,18 @@
-@media screen and (min-width: 768px) {
-  .movie-item{
-    width:20vw;
+/* ################################################################
+ Filename      : 1200.css
+ Author        : Bohn Matthias
+ Date          : 12.01.2024
+################################################################ */
+/* Media Query für Bildschirme mit einer Breite größer als 1200px */
+@media screen and (min-width: 1200px) {
+  /* Styling-Anpassungen für Movie-Items */
+  .movie-item {
+    width: 20vw;
+  }
+
+  /* Styling-Anpassungen für Bilder in AJAX-Inhalten */
+  .ajax-content img {
+    height: 29vw;
+    max-height: 380px;
   }
 }

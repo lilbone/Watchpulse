@@ -26,9 +26,21 @@ Die Watch Pulse WebApp ist eine Anwendung, die es ermöglicht, Filme und Serien 
 3. **Anzeige der Watchlist:**
    - Gehe zur Seite "My Watches".
    - Dort findest du eine Liste der von dir hinzugefügten Filme und Serien mit ihren Details.
+   - Mit der Filter Funktion kannst du alle deine Watches nach Genre Filtern und anzeigen lassen.
 
 ## Einstellungen
 Die WebApp erfordert keine spezifischen Einstellungen. Beachte jedoch, dass die OMDB-API einen API-Schlüssel benötigt, der in der `js/main.js`-Datei festgelegt ist. Stelle sicher, dass du einen gültigen API-Schlüssel von OMDB besitzt und ersetze ihn in der Datei, falls erforderlich.
+
+## Abhängigkeiten
+Die WebApp benötigt das Tool `jq` für die JSON-Verarbeitung. Stelle sicher, dass `jq` auf deinem System installiert ist, um die volle Funktionalität zu gewährleisten.
+
+### Installation von jq unter Linux
+Führe die folgenden Befehle aus, um `jq` auf einem Linux-System zu installieren:
+
+```bash
+sudo apt update
+sudo apt install -y jq
+```
 
 ## Apache2-Konfiguration
 Füge die folgende Konfiguration zur `apache2.conf` hinzu, um den Zugriff auf das Verzeichnis der CGI-Skripte zu ermöglichen:
@@ -67,7 +79,7 @@ Die `log.txt`-Datei wird für das Logging von Informationen verwendet. Hier sind
 
 - **addWatch Request:** Wenn `HTTP_ADDWATCH` auf "true" gesetzt ist, wird die Anfrage zum Hinzufügen eines Films/Serie zur Watchlist in die `log.txt` geschrieben.
   
-- **Inotifywait:** Falls `a_request` angegeben ist und gleich "b", wird `inotifywait` verwendet, um auf Änderungen an der `watchlist.txt`-Datei zu warten und dann die Informationen zu aktualisieren und einen eintrag in der `log.txt` hinzuzufügen.
+- **Query-Parameter Logging:** Die empfangenen Query-Parameter werden in die `log.txt` geschrieben.
 
 ## Anpassungen
 Du kannst das Erscheinungsbild der WebApp anpassen, indem du die CSS-Dateien in den `<link>`-Tags der `index.cgi`-Datei bearbeitest. Ändere auch den Seitentitel und die Navigationselemente nach Bedarf.
