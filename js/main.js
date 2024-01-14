@@ -1,7 +1,7 @@
 /* ################################################################
  Filename      : main.js
  Author        : Bohn Matthias
- Date          : 12.01.2024
+ Date          : 14.01.2024
 ################################################################ */
 // Dieser Code wird ausgeführt, wenn die Webseite vollständig geladen ist
 window.onload = () => {
