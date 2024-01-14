@@ -1,6 +1,7 @@
 # Watch Pulse WebApp Install
 
-### Installation von jq unter Linux
+## Installation von jq unter Linux
+
 Führe die folgenden Befehle aus, um `jq` auf einem Linux-System zu installieren:
 
 ```bash
@@ -8,7 +9,8 @@ sudo apt update
 sudo apt install -y jq
 ```
 
-### Installation von git unter Linux
+## Installation von git unter Linux
+
 Führe die folgenden Befehle aus, um `git` auf einem Linux-System zu installieren:
 
 ```bash
@@ -17,6 +19,7 @@ sudo apt install git
 ```
 
 ## Apache2-Konfiguration
+
 Installation von Apache2
 
 ```bash
@@ -63,6 +66,7 @@ service apache2 restart
 ```
 
 ## Dateien von Git herunterladen
+
 Lade die Watch-Pulse Dateien in deinen Projekt-Ordner herunter
 
 ```bash
@@ -71,6 +75,7 @@ sudo git clone https://github.com/lilbone/Watchpulse.git
 ```
 
 Anschließend musst du noch den Benutzer anpassen:
+
 ```bash
 sudo chown -R www-data:www-data /lib/cgi-bin/Watchpulse
 sudo chmod -R +x /lib/cgi-bin/Watchpulse
