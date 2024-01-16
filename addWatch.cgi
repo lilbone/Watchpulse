@@ -57,6 +57,7 @@ if [[ "$(echo "$HTTP_ADDWATCH")" == "true" ]]; then
   # Logge den empfangenen addWatch-Request und die Daten
   echo "Add Data to WATCHLIST_FILE" >> "$LOG_FILE"
   echo "" >> "$LOG_FILE"
+  # Schreibe die Daten für einen neuen Watch in die watchlist-Datei
   echo "#STARTFILM"
   echo "$addWatch"
   echo "#ENDFILM"

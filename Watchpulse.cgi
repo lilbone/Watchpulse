@@ -90,6 +90,7 @@ if [[ -n $load_watchlist ]]; then
         esac
       done
 
+      # Wenn ein Genre übereinstimmt oder alle angezeigt werden sollen gib die Filmdaten zurück 
       if [ "$match_found" == true ]; then
         echo "Film matched the requested genre. Outputting film data." >> "$LOG_FILE"
         echo "" >> "$LOG_FILE"

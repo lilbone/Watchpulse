@@ -80,6 +80,7 @@ window.onload = () => {
           body: "addWatch=" + JSON.stringify(omdbData),
         });
 
+        // Wenn Fetch-Anfrage erfolgreich starte update-Funktion
         if (response.ok) {
           console.log("Film zu den beobachteten Filmen hinzugefügt!");
           update("add");
