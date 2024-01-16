@@ -216,7 +216,6 @@ cat << EOF
           <select id="search-type">
             <option value="movie">Movie</option>
             <option value="series">Series</option>
-            <option value="episode">Episode</option>
           </select>
           <!-- Eingabefeld für den Namen oder die IMBd-Nummer -->
           <label for="search-name">Name / IMBd-Nr.:</label>
