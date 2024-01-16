@@ -29,7 +29,7 @@ for param in "${params[@]}"; do
 
   # Überprüfe, ob der Key und Value sinnvolle Werte haben
   case "$key" in
-    "load_watchlist" | "addWatch" )
+    "load_watchlist" )
       # Füge hier weitere erlaubte Keys hinzu
       # Prüfe, ob der Wert nicht leer ist
       if [ -n "$value" ]; then
@@ -48,15 +48,6 @@ for param in "${params[@]}"; do
   esac
 done
 
-# Wenn HTTP_ADDWATCH auf "true" gesetzt ist, füge den Eintrag zur Watchlist hinzu
-if [[ "$(echo "$HTTP_ADDWATCH")" == "true" ]]; then
-  # Logge den empfangenen addWatch-Request und die Daten
-  echo "Received addWatch request. Data: $addWatch" >> "$LOG_FILE"
-  echo "#STARTFILM"
-  echo "$addWatch"
-  echo "#ENDFILM"
-fi >> "$WATCHLIST_FILE"
-
 # Beschränke die Anzahl der Zeilen im Log-File auf MAX_LOG_LINES
 if [ "$(wc -l < "$LOG_FILE")" -gt "$MAX_LOG_LINES" ]; then
   # Lösche die ältesten Zeilen, um die Anzahl zu begrenzen
@@ -66,7 +57,6 @@ fi
 # Falls load_watchlist vorhanden ist, benutze inotifywait, um auf Änderungen zu warten
 if [[ -n $load_watchlist ]]; then
   echo "load_watchlist is present. Value: $load_watchlist" >> "$LOG_FILE"
-  [[ $load_watchlist = b ]] && inotifywait -e modify "$WATCHLIST_FILE" > /dev/null 2>&1
 
   # Durchlaufe die Watchlist und extrahiere Filme
   while read -r line; do
@@ -85,13 +75,12 @@ if [[ -n $load_watchlist ]]; then
       match_found=false
 
       # Jetzt enthält die Variable genre_array die Genres als Elemente eines Arrays.
-      # Sie können über das Array iterieren und jedes Genre ausgeben, um zu überprüfen, ob es korrekt ist.
       echo "Genre array for the current film: ${movie_genres[@]}" >> "$LOG_FILE"
 
       # Überprüfe, ob der übergebene Genre-Wert "all" ist oder in den Genres des Films enthalten ist
       for genre in "${movie_genres[@]}"; do
         case "$load_watchlist" in
-          "all")
+          "all" | "add")
             match_found=true
             ;;
           $genre)

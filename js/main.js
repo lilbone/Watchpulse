@@ -10,7 +10,8 @@ window.onload = () => {
   let c1;
   let isRequestPending = false;
   let omdbData;
-
+  let currentGenre = "";
+  
   // Elemente im HTML-Dokument abrufen
   const searchName = document.getElementById("search-name");
   const searchResult = document.getElementById("search-result");
@@ -70,7 +71,7 @@ window.onload = () => {
       console.log("Daten vor dem Senden: \n" + JSON.stringify(omdbData));
       try {
         // Fetch-Anfrage an den Server senden
-        const response = await fetch(url, {
+        const response = await fetch("/addWatch.cgi", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -81,6 +82,7 @@ window.onload = () => {
 
         if (response.ok) {
           console.log("Film zu den beobachteten Filmen hinzugefügt!");
+          update("add");
         } else {
           throw new Error("Netzwerkantwort war nicht in Ordnung.");
         }
@@ -98,23 +100,23 @@ window.onload = () => {
   function start() {
     // Intervall für die Update-Sequenz festlegen
     const genre = document.getElementById("filter");
-    setInterval(() => update(genre.value), 1000);
+    setInterval(() => update(genre.value), 200);
     //update("all");
   }
 
   // Funktion, um Filme zu aktualisieren
-  function update(block) {
+  function update(genre) {
     // Prüfen, ob bereits eine Anfrage aussteht
-    if (!isRequestPending) {
+    if (!isRequestPending && genre != currentGenre) {
       isRequestPending = true;
-
+      currentGenre = genre;
       // Daten vom Server abrufen
       fetch(url, {
         method: "POST",
         headers: {
           "Content-type": "application/x-www-form-urlencoded",
         },
-        body: "load_watchlist=" + block,
+        body: "load_watchlist=" + genre,
       })
         .then((response) => response.text())
         .then((jsonData) => {
