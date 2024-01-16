@@ -37,6 +37,7 @@ for param in "${params[@]}"; do
         echo "Processing parameter: $param" >> "$LOG_FILE"
       else
         echo "Error: Value for key $key is empty." >> "$LOG_FILE"
+        exit 1
       fi
       ;;
 
