@@ -211,7 +211,7 @@ cat << EOF
         <!-- Überschrift und Eingabebereich für die Suche -->
         <h1>Search your Watch</h1>
         <div id="search-film">
-          <!-- Dropdown für den Typ (Movie, Series, Episode) -->
+          <!-- Dropdown für den Typ (Movie, Series) -->
           <label for="search-type">Type:</label>
           <select id="search-type">
             <option value="movie">Movie</option>
