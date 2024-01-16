@@ -6,7 +6,7 @@ Die Watch Pulse WebApp ist eine Anwendung, die es ermöglicht, Filme und Serien 
 
 ## Funktionalitäten
 
-1. **Suche nach Filmen/Serien/Episoden:** Die WebApp ermöglicht es dem Benutzer, nach Filmen, Serien oder Episoden zu suchen, indem er den Namen oder die IMBd-Nummer  unter "Search your Watch" eingibt.
+1. **Suche nach Filmen/Serien:** Die WebApp ermöglicht es dem Benutzer, nach Filmen oder Serien zu suchen, indem er den Namen oder die IMBd-Nummer  unter "Search your Watch" eingibt.
 
 2. **Anzeige von Informationen:** Nach der Suche werden detaillierte Informationen zum ausgewählten Film/Serie angezeigt, einschließlich Poster, Titel, Jahr.
 
@@ -16,10 +16,10 @@ Die Watch Pulse WebApp ist eine Anwendung, die es ermöglicht, Filme und Serien 
 
 ## Verwendung
 
-1. **Suche nach Filmen/Serien/Episoden:**
+1. **Suche nach Filmen/Serien:**
    - Gehe zur Seite "Search your Watch".
-   - Wähle den Typ (Movie, Series, Episode) im Dropdown-Menü "Type" aus.
-   - Gib den Namen oder die IMBd-Nummer des Films/Serie/Episode in das Feld "Name/IMBd-Nr." ein.
+   - Wähle den Typ (Movie, Series) im Dropdown-Menü "Type" aus.
+   - Gib den Namen oder die IMBd-Nummer des Films/Serie in das Feld "Name/IMBd-Nr." ein.
    - Das Ergebnis wird unter dem Suchfeld angezeigt, einschließlich Poster, Titel, Jahr und einem Formular zum Hinzufügen zur Watchlist.
 
 2. **Hinzufügen zu Watchlist:**
