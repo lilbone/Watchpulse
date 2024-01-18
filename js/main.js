@@ -68,7 +68,9 @@ window.onload = () => {
       e.preventDefault();
       omdbData.myRating = document.getElementById("my-rating").value;
 
-      console.log("Daten vor dem Senden: \n" + JSON.stringify(omdbData));
+      omdbData = JSON.stringify(omdbData).replace(/&/g, 'and');
+      console.log("Daten vor dem Senden: \n" + omdbData);
+      
       try {
         // Fetch-Anfrage an den Server senden
         const response = await fetch("/addWatch.cgi", {
@@ -77,7 +79,7 @@ window.onload = () => {
             "Content-Type": "application/json",
             "addWatch": "true",
           },
-          body: "addWatch=" + JSON.stringify(omdbData),
+          body: "addWatch=" + omdbData,
         });
 
         // Wenn Fetch-Anfrage erfolgreich starte update-Funktion
@@ -101,8 +103,8 @@ window.onload = () => {
   function start() {
     // Intervall für die Update-Sequenz festlegen
     const genre = document.getElementById("filter");
-    setInterval(() => update(genre.value), 200);
-    //update("all");
+    //setInterval(() => update(genre.value), 200);
+    update("all");
   }
 
   // Funktion, um Filme zu aktualisieren

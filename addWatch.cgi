@@ -30,12 +30,12 @@ for param in "${params[@]}"; do
     "addWatch" )
       # Überprüfe, ob der Wert nicht leer ist
       if [ -n "$value" ]; then
-        # Überprüfe, ob der Wert ein gültiges JSON ist
+         Überprüfe, ob der Wert ein gültiges JSON ist
         if jq -e . >/dev/null 2>&1 <<< "$value"; then
           declare "$key=$value"
           echo "Processing parameter: $param" >> "$LOG_FILE"
         else
-          echo "Error: Value for key $key is not valid JSON." >> "$LOG_FILE"
+          echo "Error: Value for key $value is not valid JSON." >> "$LOG_FILE"
           exit 1  # Programm beenden
         fi
       else
