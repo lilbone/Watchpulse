@@ -103,8 +103,8 @@ window.onload = () => {
   function start() {
     // Intervall für die Update-Sequenz festlegen
     const genre = document.getElementById("filter");
-    //setInterval(() => update(genre.value), 200);
-    update("all");
+    setInterval(() => update(genre.value), 200);
+    //update("all");
   }
 
   // Funktion, um Filme zu aktualisieren
