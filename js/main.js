@@ -6,8 +6,6 @@
 // Dieser Code wird ausgeführt, wenn die Webseite vollständig geladen ist
 window.onload = () => {
   // Deklaration von Variablen
-  let myAjax;
-  let c1;
   let isRequestPending = false;
   let omdbData;
   let currentGenre = "";
